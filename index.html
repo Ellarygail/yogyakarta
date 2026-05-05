@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yogyakarta — Jiwa Tanah Jawa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="enhance.css"/>
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8cb7a;
+      --deep: #0e0b07;
+      --brown: #3b2410;
+      --terracotta: #a0522d;
+      --cream: #f5ecd7;
+      --muted: #c4ab87;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,168,76,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 100% at 50% 100%, rgba(59,36,16,0.9) 0%, transparent 60%),
+        url('https://images.unsplash.com/photo-1588169329625-7f2d0d5d2e5f?w=1600&auto=format&fit=crop') center/cover no-repeat;
+      filter: brightness(0.55) saturate(1.2);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.12); }
+    }
+
+    /* Batik-inspired decorative overlay */
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(201,168,76,0.04) 0px, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(-45deg, rgba(201,168,76,0.04) 0px, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 20px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1.4s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      background: linear-gradient(160deg, #fff7e0 0%, var(--gold-light) 40%, var(--gold) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      margin-bottom: 0.3em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,236,215,0.8);
+      letter-spacing: 0.06em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85em 2.5em;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+      z-index: -1;
+    }
+
+    .hero-cta:hover::before { transform: scaleX(1); }
+    .hero-cta:hover { color: var(--deep); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.5;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow { width: 1px; height: 36px; background: var(--gold); }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .section-body {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 680px;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 3rem;
+    }
+
+    .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .divider-diamond {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── INTRO SPLIT ── */
+    .intro {
+      background: linear-gradient(180deg, #0e0b07 0%, #1a1008 100%);
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .intro-image-wrap {
+      position: relative;
+    }
+
+    .intro-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .intro-img-caption {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--brown);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 1rem 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── DESTINATIONS GRID ── */
+    .destinations {
+      background: #12090433;
+    }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .dest-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .dest-card:first-child {
+      grid-row: span 2;
+    }
+
+    .dest-img {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(.22,1,.36,1), filter 0.5s;
+      filter: brightness(0.7) saturate(0.9);
+    }
+
+    .dest-card:hover .dest-img {
+      transform: scale(1.08);
+      filter: brightness(0.5) saturate(1.1);
+    }
+
+    .dest-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(14,11,7,0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem 1.5rem;
+    }
+
+    .dest-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .dest-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .dest-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(245,236,215,0.7);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.4s;
+      opacity: 0;
+    }
+
+    .dest-card:hover .dest-desc {
+      max-height: 80px;
+      opacity: 1;
+    }
+
+    /* ── MODAL ── */
+    .dest-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 5, 2, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .dest-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .dest-modal {
+      background: linear-gradient(145deg, #1a1008 0%, #120a04 100%);
+      border: 1px solid rgba(201,168,76,0.3);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(30px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(201,168,76,0.3) transparent;
+    }
+    .dest-modal-backdrop.active .dest-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .dest-modal-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75) saturate(1.1);
+    }
+
+    .dest-modal-body {
+      padding: 2.5rem 2.5rem 3rem;
+    }
+
+    .dest-modal-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    .dest-modal-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .dest-modal-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+    .dest-modal-divider .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .dest-modal-divider .divider-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+    .dest-modal-desc {
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .dest-modal-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .dest-fact {
+      background: rgba(201,168,76,0.05);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.2rem;
+    }
+
+    .dest-fact-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    .dest-fact-value {
+      font-size: 0.95rem;
+      color: var(--cream);
+      font-weight: 300;
+    }
+
+    .dest-modal-tip {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 1.2rem 1.5rem;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(245,236,215,0.75);
+      font-style: italic;
+    }
+    .dest-modal-tip strong { color: var(--gold); font-style: normal; }
+
+    .dest-modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 38px;
+      height: 38px;
+      background: rgba(14,11,7,0.7);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, color 0.25s;
+      z-index: 10;
+    }
+    .dest-modal-close:hover { background: var(--gold); color: var(--deep); }
+
+    @media (max-width: 600px) {
+      .dest-modal-facts { grid-template-columns: 1fr; }
+      .dest-modal-body { padding: 1.5rem 1.5rem 2rem; }
+    }
+
+    /* ── CULTURE STRIP ── */
+    .culture {
+      background: var(--brown);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 4rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .culture-marquee {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .culture-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .culture-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── FOOD SECTION ── */
+    .food-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .food-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 2rem 1.5rem;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative;
+    }
+
+    .food-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .food-card:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.04); }
+    .food-card:hover::before { transform: scaleX(1); }
+
+    .food-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .food-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    .food-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: linear-gradient(135deg, #1a0f05 0%, #0e0b07 50%, #1a1005 100%);
+      text-align: center;
+      padding: 8rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '❝';
+      position: absolute;
+      top: 2rem; left: 50%;
+      transform: translateX(-50%);
+      font-size: 15rem;
+      color: rgba(201,168,76,0.04);
+      font-family: serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--cream);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-text strong { color: var(--gold); font-style: normal; font-weight: 400; }
+
+    .quote-attr {
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── BEST TIME ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3rem;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .timeline-item {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid rgba(201,168,76,0.2);
+      transition: background 0.3s;
+    }
+
+    .timeline-item:last-child { border-right: none; }
+    .timeline-item:hover { background: rgba(201,168,76,0.05); }
+
+    .timeline-season {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .timeline-label {
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #08060300;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 4rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(196,171,135,0.4);
+    }
+
+    /* ── FADE-IN ON SCROLL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .dest-grid { grid-template-columns: 1fr 1fr; }
+      .dest-card:first-child { grid-row: span 1; }
+      .food-cards { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .timeline-item:nth-child(2) { border-right: none; }
+      .timeline-item:nth-child(1),
+      .timeline-item:nth-child(2) { border-bottom: 1px solid rgba(201,168,76,0.2); }
+    }
+
+    @media (max-width: 600px) {
+      .dest-grid { grid-template-columns: 1fr; }
+      .food-cards { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .timeline-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.2); }
+      .timeline-item:last-child { border-bottom: none; }
+      .intro-img-caption { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── LOADING SCREEN ── -->
+<div class="loader" id="loader">
+  <div class="loader-text">Yogyakarta</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ── SCROLL PROGRESS ── -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ── CURSOR GLOW ── -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ── FLOATING NAV ── -->
+<nav class="floating-nav" id="floatingNav">
+  <a href="#" class="nav-brand">Jogja</a>
+  <ul class="nav-links">
+    <li><a href="#intro">Pengenalan</a></li>
+    <li><a href="#destinasi">Destinasi</a></li>
+    <li><a href="#kuliner">Kuliner</a></li>
+    <li><a href="#panduan">Panduan</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="fireflies" id="fireflies"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Jelajahi Indonesia · Daerah Istimewa Jawa</p>
+    <h1>Yogyakarta</h1>
+    <p class="hero-subtitle">Di Mana Dewa-Dewa Kuno Tidur di Bawah Langit Berapi</p>
+    <a href="#intro" class="hero-cta">Mulai Perjalanan</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Gulir</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<section class="intro" id="intro">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-image-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&auto=format&fit=crop"
+          alt="Borobudur at sunrise"
+          class="intro-img"
+        />
+        <div class="intro-img-caption">Borobudur · Abad ke-8</div>
+      </div>
+      <div class="reveal">
+        <p class="section-label">Pengenalan</p>
+        <h2 class="section-title">Jiwa <em>Tanah Jawa</em></h2>
+        <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+        <p class="section-body">
+          Terletak di antara Gunung Merapi yang megah dan Samudra Hindia yang tenang,
+          Yogyakarta — dengan penuh kasih dipanggil <em>Jogja</em> — adalah jantung budaya
+          Jawa yang masih berdenyut. Di sini, candi-candi kuno menjulang dari kabut hutan,
+          para pengrajin batik menenun warisan berabad-abad ke dalam kain sutra, dan suara
+          gamelan mengalun merdu di pelataran keraton saat senja tiba.
+        </p>
+        <br/>
+        <p class="section-body">
+          Sebuah kota di mana yang sakral dan yang sehari-hari tak terpisahkan, Yogyakarta
+          berdiri tegak di antara kota-kota lain di Indonesia — mandiri, penuh jiwa spiritual,
+          dan tiada habisnya keindahannya.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CULTURE MARQUEE ── -->
+<div class="culture">
+  <div class="culture-marquee">
+    <div class="culture-item"><span class="culture-dot"></span>Wayang Kulit</div>
+    <div class="culture-item"><span class="culture-dot"></span>Batik Tulis</div>
+    <div class="culture-item"><span class="culture-dot"></span>Musik Gamelan</div>
+    <div class="culture-item"><span class="culture-dot"></span>Keraton</div>
+    <div class="culture-item"><span class="culture-dot"></span>Sendratari Ramayana</div>
+    <div class="culture-item"><span class="culture-dot"></span>Kuliner Gudeg</div>
+    <div class="culture-item"><span class="culture-dot"></span>Gunung Merapi</div>
+    <div class="culture-item"><span class="culture-dot"></span>Candi Prambanan</div>
+    <div class="culture-item"><span class="culture-dot"></span>Jalan Malioboro</div>
+    <!-- repeat for seamless loop -->
+    <div class="culture-item"><span class="culture-dot"></span>Wayang Kulit</div>
+    <div class="culture-item"><span class="culture-dot"></span>Batik Tulis</div>
+    <div class="culture-item"><span class="culture-dot"></span>Musik Gamelan</div>
+    <div class="culture-item"><span class="culture-dot"></span>Keraton</div>
+    <div class="culture-item"><span class="culture-dot"></span>Sendratari Ramayana</div>
+    <div class="culture-item"><span class="culture-dot"></span>Kuliner Gudeg</div>
+    <div class="culture-item"><span class="culture-dot"></span>Gunung Merapi</div>
+    <div class="culture-item"><span class="culture-dot"></span>Candi Prambanan</div>
+    <div class="culture-item"><span class="culture-dot"></span>Jalan Malioboro</div>
+  </div>
+</div>
+
+<!-- ── DESTINATIONS ── -->
+<section id="destinasi" style="background:#0e0b07; padding: 6rem 1.5rem;">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Destinasi</p>
+      <h2 class="section-title">Keajaiban <em>Bersejarah</em></h2>
+      <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+    </div>
+    <div class="dest-grid reveal">
+
+      <div class="dest-card" data-dest="borobudur" role="button" tabindex="0" aria-label="Buka detail Borobudur">
+        <img src="https://media.istockphoto.com/id/1575482444/photo/borobudur-temple-in-yogyakarta-java-indonesia.jpg?s=612x612&w=0&k=20&c=IuPVovNHnancR8-e2u_hiPe_qlPp0HTwr4bcWUDoBdI=" alt="Borobudur" class="dest-img"/>
+        <div class="dest-overlay">
+          <span class="dest-num">01 · Warisan UNESCO</span>
+          <h3 class="dest-name">Borobudur</h3>
+          <p class="dest-desc">Monumen Buddha terbesar di dunia, dibangun pada abad ke-8. Saksikan matahari terbit dari stupa-stupa batunya saat kabut menyelimuti dataran vulkanik.</p>
+        </div>
+      </div>
+
+      <div class="dest-card" data-dest="prambanan" role="button" tabindex="0" aria-label="Buka detail Prambanan">
+        <img src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=800&auto=format&fit=crop" alt="Prambanan" class="dest-img"/>
+        <div class="dest-overlay">
+          <span class="dest-num">02 · Mitologi Hindu</span>
+          <h3 class="dest-name">Prambanan</h3>
+          <p class="dest-desc">Menara-menara megah yang dipersembahkan kepada Trimurti Hindu, membara keemasan saat matahari terbenam. Panggung agung Sendratari Ramayana yang legendaris.</p>
+        </div>
+      </div>
+
+      <div class="dest-card" data-dest="keraton" role="button" tabindex="0" aria-label="Buka detail Keraton">
+        <img src="https://geoparkjogja.jogjaprov.go.id/uploads/site/1683517798_e7978510b2b1a5671686.jpg" alt="Keraton Palace" class="dest-img"/>
+        <div class="dest-overlay">
+          <span class="dest-num">03 · Warisan Kerajaan</span>
+          <h3 class="dest-name">Keraton</h3>
+          <p class="dest-desc">Istana yang masih dihuni Sultan Yogyakarta — labirin pelataran, pendapa berukir emas, dan tradisi budaya Jawa yang terus hidup hingga kini.</p>
+        </div>
+      </div>
+
+      <div class="dest-card" data-dest="merapi" role="button" tabindex="0" aria-label="Buka detail Gunung Merapi">
+        <img src="https://images.unsplash.com/photo-1518070588484-2b53926cba76?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyYXBpfGVufDB8fDB8fHww00&auto=format&fit=crop" alt="Mount Merapi" class="dest-img"/>
+        <div class="dest-overlay">
+          <span class="dest-num">04 · Kekuatan Alam</span>
+          <h3 class="dest-name">Gunung Merapi</h3>
+          <p class="dest-desc">Gunung berapi paling aktif di Indonesia, yang disakralkan oleh masyarakat Jawa — kawahnya yang bercahaya terlihat dari kota di malam hari.</p>
+        </div>
+      </div>
+
+      <div class="dest-card" data-dest="malioboro" role="button" tabindex="0" aria-label="Buka detail Jalan Malioboro">
+        <img src="https://backpackerjakarta.com/wp-content/uploads/2017/03/malioboro-3.jpg" alt="Malioboro" class="dest-img"/>
+        <div class="dest-overlay">
+          <span class="dest-num">05 · Jiwa Kota</span>
+          <h3 class="dest-name">Jalan Malioboro</h3>
+          <p class="dest-desc">Nadi Jogja yang terus berdenyut — toko batik, jajanan kaki lima, becak, dan wangi bunga melati sesajen saat senja mulai turun.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE ── -->
+<div class="quote-section">
+  <blockquote class="quote-text reveal">
+    "Yogyakarta bukan sekadar kota — ia adalah sebuah <strong>rasa</strong>,
+    arus dari sesuatu yang lebih tua dari ingatan, mengalir
+    di antara candi-candi batu dan asap Merapi."
+  </blockquote>
+  <p class="quote-attr reveal">— Catatan perjalanan, Tanah Jawa</p>
+</div>
+
+<!-- ── STATS ── -->
+<section class="stats reveal">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number" data-target="1200">0</div>
+      <div class="stat-label">Tahun Sejarah</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="52">0</div>
+      <div class="stat-label">Situs Warisan</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="4">0</div>
+      <div class="stat-label">Juta Wisatawan/Tahun</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="1">0</div>
+      <div class="stat-label">Daerah Istimewa</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOD ── -->
+<section id="kuliner" style="background: linear-gradient(180deg, #0e0b07 0%, #140d05 100%); padding: 6rem 1.5rem;">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Warisan Kuliner</p>
+      <h2 class="section-title">Cita Rasa <em>Jogja</em></h2>
+      <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+      <p class="section-body">Kuliner Yogyakarta adalah sebuah seni yang sama halusnya dengan batik — dimasak perlahan, dibumbui dengan kesabaran, dan kaya akan lapisan rasa berabad-abad.</p>
+    </div>
+    <div class="food-cards reveal">
+      <div class="food-card">
+        <div class="food-icon">🍛</div>
+        <div class="food-name">Gudeg</div>
+        <p class="food-desc">Nangka muda yang dimasak berjam-jam dalam santan dan gula aren — manis, kaya rasa, dan sangat khas Jawa.</p>
+      </div>
+      <div class="food-card">
+        <div class="food-icon">🥜</div>
+        <div class="food-name">Krecek</div>
+        <p class="food-desc">Kulit sapi yang renyah dimasak dalam sambal cabai merah membara — paduan sempurna untuk manisnya gudeg.</p>
+      </div>
+      <div class="food-card">
+        <div class="food-icon">🫙</div>
+        <div class="food-name">Wedang Ronde</div>
+        <p class="food-desc">Kuah jahe hangat dengan bola-bola ketan mengambang — penghangat malam di bawah tembok keraton yang bisu.</p>
+      </div>
+      <div class="food-card">
+        <div class="food-icon">🍢</div>
+        <div class="food-name">Sate Klathak</div>
+        <p class="food-desc">Tusukan daging kambing yang dipanggang di atas jeruji besi, dibumbui garam saja — mahakarya minimalis jalanan Jogja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEST TIME ── -->
+<section id="panduan" style="background: #100b05; padding: 6rem 1.5rem; border-top: 1px solid rgba(201,168,76,0.1);">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Panduan Wisata</p>
+      <h2 class="section-title">Kapan <em>Berkunjung</em></h2>
+      <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-season">Mei – Juli</div>
+        <div class="timeline-label">🌤️</div>
+        <p class="timeline-desc">Musim kemarau tiba. Langit cerah sempurna untuk menyaksikan matahari terbit di Borobudur. Waktu terbaik memotret candi-candi.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-season">Agustus – Oktober</div>
+        <div class="timeline-label">☀️</div>
+        <p class="timeline-desc">Puncak musim kemarau. Pandangan terbaik ke Gunung Merapi. Sendratari Ramayana digelar setiap malam di Prambanan.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-season">November – Januari</div>
+        <div class="timeline-label">🌦️</div>
+        <p class="timeline-desc">Hujan awal membawa lanskap hijau yang subur. Festival budaya semarak dan suasana candi lebih tenang.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-season">Februari – April</div>
+        <div class="timeline-label">🌿</div>
+        <p class="timeline-desc">Hamparan sawah menghijau mengelilingi kota. Cocok untuk workshop batik dan menjelajahi pasar tradisional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BACK TO TOP ── -->
+<button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+
+<!-- ── DESTINATION MODAL ── -->
+<div class="dest-modal-backdrop" id="destModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="dest-modal" id="destModal">
+    <button class="dest-modal-close" id="destModalClose" aria-label="Tutup">✕</button>
+    <img src="" alt="" class="dest-modal-img" id="modalImg"/>
+    <div class="dest-modal-body">
+      <p class="dest-modal-tag" id="modalTag"></p>
+      <h2 class="dest-modal-title" id="modalTitle"></h2>
+      <div class="dest-modal-divider"><div class="divider-line"></div><div class="divider-diamond"></div></div>
+      <p class="dest-modal-desc" id="modalDesc"></p>
+      <div class="dest-modal-facts" id="modalFacts"></div>
+      <div class="dest-modal-tip" id="modalTip"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Yogyakarta</div>
+  <p class="footer-tagline">Tak Pernah Selesai Dikagumi — Istimewa</p>
+  <div class="footer-links">
+    <a href="#">Candi</a>
+    <a href="#">Budaya</a>
+    <a href="#">Kuliner</a>
+    <a href="#">Alam</a>
+    <a href="#">Rencanakan Perjalanan</a>
+  </div>
+  <p class="footer-copy">Sebuah persembahan untuk Daerah Istimewa Yogyakarta · Dibuat dengan cinta dari Tanah Jawa</p>
+</footer>
+
+<script>
+  // ── Loading screen ──
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 1000);
+  });
+
+  // ── Reveal on scroll ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Smooth scroll for nav links & hero CTA ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── Floating nav scroll effect ──
+  const nav = document.getElementById('floatingNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 100);
+  });
+
+  // ── Scroll progress bar ──
+  const progressBar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  });
+
+  // ── Back to top ──
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backBtn.classList.toggle('visible', window.scrollY > 600);
+  });
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Cursor glow ──
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // ── Fireflies ──
+  const firefliesContainer = document.getElementById('fireflies');
+  for (let i = 0; i < 15; i++) {
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    f.style.left = Math.random() * 100 + '%';
+    f.style.top = Math.random() * 100 + '%';
+    f.style.animationDelay = Math.random() * 8 + 's';
+    f.style.animationDuration = (6 + Math.random() * 6) + 's';
+    firefliesContainer.appendChild(f);
+  }
+
+  // ── Counter animation ──
+  const counters = document.querySelectorAll('.stat-number');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const duration = 2000;
+        const start = performance.now();
+        const animate = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(animate);
+          else el.textContent = target.toLocaleString() + '+';
+        };
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
+
+  // ── Destination modal data ──
+  const destData = {
+    borobudur: {
+      tag: '01 · Warisan UNESCO',
+      name: 'Borobudur',
+      img: 'https://media.istockphoto.com/id/1575482444/photo/borobudur-temple-in-yogyakarta-java-indonesia.jpg?s=612x612&w=0&k=20&c=IuPVovNHnancR8-e2u_hiPe_qlPp0HTwr4bcWUDoBdI=',
+      desc: 'Borobudur adalah candi Buddha terbesar di dunia sekaligus salah satu monumen arkeologi terbesar yang pernah ada. Dibangun sekitar abad ke-8 Masehi pada masa Dinasti Syailendra, candi ini memiliki 2.672 panel relief dan 504 arca Buddha yang terpahat rapi. Struktur bertingkat 9 ini melambangkan kosmologi Buddha — perjalanan dari dunia fana menuju pencerahan tertinggi, dengan stupa induk di puncaknya yang menjulang ke langit.',
+      facts: [
+        { label: 'Dibangun', value: 'Abad ke-8 M (±800 M)' },
+        { label: 'Status', value: 'Situs Warisan UNESCO' },
+        { label: 'Jumlah Relief', value: '2.672 panel ukiran' },
+        { label: 'Jarak dari Jogja', value: '±40 km (1 jam perjalanan)' }
+      ],
+      tip: '<strong>Tips Terbaik:</strong> Kunjungi saat fajar (buka pukul 06.00 WIB) untuk menyaksikan matahari terbit yang magis di antara stupa-stupa, saat kabut tipis masih menyelimuti hutan dan dataran vulkanik di sekitarnya.'
+    },
+    prambanan: {
+      tag: '02 · Mitologi Hindu',
+      name: 'Candi Prambanan',
+      img: 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=800&auto=format&fit=crop',
+      desc: 'Prambanan adalah kompleks candi Hindu terbesar di Indonesia dan salah satu yang terindah di Asia Tenggara. Dibangun pada abad ke-9 Masehi, kompleks ini dipersembahkan kepada Trimurti — Brahma sang Pencipta, Wisnu sang Pemelihara, dan Siwa sang Pemusnah. Menara utama Siwa menjulang setinggi 47 meter, dikelilingi 240 candi kecil dalam formasi yang megah dan penuh simbolisme kosmis.',
+      facts: [
+        { label: 'Dibangun', value: 'Abad ke-9 M (±850 M)' },
+        { label: 'Agama', value: 'Hindu (Trimurti)' },
+        { label: 'Tinggi Menara Utama', value: '47 meter' },
+        { label: 'Pertunjukan', value: 'Sendratari Ramayana (purnama)' }
+      ],
+      tip: '<strong>Tips Terbaik:</strong> Datang sore hari untuk menyaksikan siluet menara-menara candi yang menyala keemasan saat matahari terbenam. Setiap bulan purnama, pertunjukan Sendratari Ramayana digelar di pelataran terbuka — sebuah pengalaman yang tak terlupakan.'
+    },
+    keraton: {
+      tag: '03 · Warisan Kerajaan',
+      name: 'Keraton Yogyakarta',
+      img: 'https://geoparkjogja.jogjaprov.go.id/uploads/site/1683517798_e7978510b2b1a5671686.jpg',
+      desc: 'Keraton Ngayogyakarta Hadiningrat adalah istana resmi Kesultanan Yogyakarta yang dibangun sejak 1755 oleh Sultan Hamengkubuwono I. Tidak seperti istana-istana lain di dunia, Keraton Yogyakarta masih dihuni dan difungsikan sebagai pusat adat dan kebudayaan Jawa yang aktif. Kompleks seluas 14.000 m² ini terdiri dari serangkaian pelataran dan pavilion yang sarat dengan filosofi, simbol-simbol kosmis, dan nilai-nilai Jawa yang mendalam.',
+      facts: [
+        { label: 'Didirikan', value: '1755 M oleh Sultan HB I' },
+        { label: 'Luas Kompleks', value: '±14.000 m²' },
+        { label: 'Status', value: 'Masih dihuni Sultan' },
+        { label: 'Jam Buka', value: '09.00 – 14.00 WIB (kecuali Jumat)' }
+      ],
+      tip: '<strong>Tips Terbaik:</strong> Kunjungi pagi hari saat abdi dalem (pegawai keraton) masih menjalankan tugas dengan berpakaian adat Jawa. Jangan lewatkan Bangsal Kencana — pendapa berlantai marmer dengan ukiran emas yang menjadi jantung Keraton.'
+    },
+    merapi: {
+      tag: '04 · Kekuatan Alam',
+      name: 'Gunung Merapi',
+      img: 'https://images.unsplash.com/photo-1518070588484-2b53926cba76?fm=jpg&q=60&w=3000&auto=format&fit=crop',
+      desc: 'Gunung Merapi — secara harfiah berarti "Gunung Api" — adalah stratovolcano paling aktif di Indonesia dan salah satu yang paling berbahaya di dunia. Bagi masyarakat Jawa, Merapi bukan sekadar gunung — ia adalah entitas spiritual yang menjaga Yogyakarta, dipercaya sebagai penghubung antara dunia manusia dan dunia gaib. Erupsi besar tahun 2010 meninggalkan lanskap dramatis yang kini menjadi destinasi wisata vulkanik paling menakjubkan.',
+      facts: [
+        { label: 'Ketinggian', value: '2.930 meter dpl' },
+        { label: 'Tipe', value: 'Stratovolcano aktif' },
+        { label: 'Erupsi Besar Terakhir', value: '2010 (VEI 4)' },
+        { label: 'Wisata Populer', value: 'Lava tour jeep, pendakian' }
+      ],
+      tip: '<strong>Tips Terbaik:</strong> Ikuti Lava Tour dengan jeep terbuka untuk menjelajahi sisa-sisa erupsi 2010 — dari Kali Kuning yang berbatu hingga Museum Mini Sisa Hartaku yang menyentuh hati. Pendakian ke puncak tersedia namun tergantung status aktivitas vulkanik.'
+    },
+    malioboro: {
+      tag: '05 · Jiwa Kota',
+      name: 'Jalan Malioboro',
+      img: 'https://backpackerjakarta.com/wp-content/uploads/2017/03/malioboro-3.jpg',
+      desc: 'Jalan Malioboro adalah urat nadi Yogyakarta — jalan ikonik sepanjang 2 km yang membentang dari Stasiun Tugu hingga Kraton, melewati jantung kota dengan segala hiruk-pikuknya yang khas. Di sini, toko-toko batik berjajar bersisian dengan warung gudeg dan pedagang kaki lima yang menjajakan kerajinan tangan. Malioboro bukan sekadar jalan belanja — ia adalah panggung kehidupan Jogja yang sesungguhnya, tempat wisatawan dan warga lokal berinteraksi dalam harmoni.',
+      facts: [
+        { label: 'Panjang Jalan', value: '±2 km (pusat kota)' },
+        { label: 'Terkenal dengan', value: 'Batik, kerajinan, kuliner' },
+        { label: 'Transportasi', value: 'Becak, andong, Trans Jogja' },
+        { label: 'Waktu Terbaik', value: 'Sore–malam hari' }
+      ],
+      tip: '<strong>Tips Terbaik:</strong> Datanglah sore menjelang malam untuk menikmati Malioboro yang paling hidup. Tawar-menawar adalah bagian dari budaya di sini — nikmati prosesnya! Cicipi angkringan (warung gerobak) di pinggir jalan untuk pengalaman kuliner malam yang otentik.'
+    }
+  };
+
+  // ── Modal DOM refs ──
+  const backdrop   = document.getElementById('destModalBackdrop');
+  const modalImg   = document.getElementById('modalImg');
+  const modalTag   = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc  = document.getElementById('modalDesc');
+  const modalFacts = document.getElementById('modalFacts');
+  const modalTip   = document.getElementById('modalTip');
+  const closeBtn   = document.getElementById('destModalClose');
+
+  function openDestModal(key) {
+    const d = destData[key];
+    if (!d) return;
+    modalImg.src        = d.img;
+    modalImg.alt        = d.name;
+    modalTag.textContent  = d.tag;
+    modalTitle.textContent = d.name;
+    modalDesc.textContent  = d.desc;
+    modalFacts.innerHTML   = d.facts.map(f =>
+      `<div class="dest-fact"><div class="dest-fact-label">${f.label}</div><div class="dest-fact-value">${f.value}</div></div>`
+    ).join('');
+    modalTip.innerHTML = d.tip;
+    // Scroll modal content to top on open
+    document.getElementById('destModal').scrollTop = 0;
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeDestModal() {
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.dest-card[data-dest]').forEach(card => {
+    card.addEventListener('click', () => openDestModal(card.dataset.dest));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDestModal(card.dataset.dest); }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeDestModal);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeDestModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDestModal(); });
+</script>
+</body>
+</html>
